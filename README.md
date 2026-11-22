@@ -34,15 +34,17 @@ pluggable: enable them in priority order and configure each one through the same
 | `PROVIDER_<ID>_BASE_URL` | Override the provider endpoint (blank = provider default) |
 | `PROVIDER_<ID>_TIMEOUT` | Request timeout in seconds (blank = `10`) |
 | `PROVIDER_<ID>_USER_AGENT` | Optional User-Agent header |
-| `BARCODE_CACHE_DIR` | Cache location (blank = per-user OS cache directory) |
+| `BARCODE_CACHE_DIR` | Disk cache location (blank = memory-only, nothing written to disk) |
 | `BARCODE_CACHE_TTL_SECONDS` | Cache entry lifetime in seconds (blank = `604800`, 7 days) |
 
 Adding a provider requires a `PROVIDER_<ID>_*` block plus a class under
 `src/barcode_tui/services/providers/`. The configuration loader, UI, caching, and error handling
 stay unchanged.
 
-The cache is stored with `diskcache` using `JSONDisk` (JSON-only values, no pickle) and lives in a
-per-user directory resolved with `platformdirs`.
+Caching is in-memory by default: entries live for the duration of the process, expire after
+`BARCODE_CACHE_TTL_SECONDS`, and nothing is written to disk. Set `BARCODE_CACHE_DIR` to a
+writable directory to enable a persistent cache; it is then stored with `diskcache` using
+`JSONDisk` (JSON-only values, no pickle), and the directory is created on first write.
 
 ## Development
 

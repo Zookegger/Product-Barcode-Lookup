@@ -188,7 +188,6 @@ source = { editable = "." }
 dependencies = [
     { name = "diskcache" },
     { name = "httpx" },
-    { name = "platformdirs" },
     { name = "python-dotenv" },
     { name = "textual" },
 ]
@@ -205,7 +204,6 @@ dev = [
 requires-dist = [
     { name = "diskcache" },
     { name = "httpx" },
-    { name = "platformdirs" },
     { name = "python-dotenv" },
     { name = "textual" },
 ]
