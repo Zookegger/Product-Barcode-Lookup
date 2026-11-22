@@ -33,6 +33,11 @@ def test_parse_float_falls_back_when_blank(monkeypatch: pytest.MonkeyPatch) -> N
     assert parse_float("X", 1.0) == 1.0
 
 
+def test_parse_int_valid(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("X", "42")
+    assert parse_int("X", 7) == 42
+
+
 def test_parse_int_falls_back_on_garbage(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("X", "abc")
     assert parse_int("X", 7) == 7

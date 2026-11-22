@@ -6,7 +6,7 @@ from barcode_tui.utils import parse_csv, parse_float, parse_int, parse_str
 
 DEFAULT_TIMEOUT = 10.0
 DEFAULT_CACHE_TTL_SECONDS = 604_800  # 7 Days
-APP_NAME = "barcode-tui"
+APP_NAME = "barcode-tui"  # Leftover from storage-based cache
 
 
 # Frozen = read-only
